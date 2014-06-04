@@ -103,6 +103,8 @@ execute pathogen#infect()
 " "" set wildignore+=*_build/*
 " "" set wildignore+=*/coverage/*
 
+" " cd ~/.vim/bundle/ && git clone --recursive
+" https://github.com/davidhalter/jedi-vim.git
 
 " Python folding
 " mkdir -p ~/.vim/ftplugin
