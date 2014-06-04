@@ -15,15 +15,27 @@ let mapleader = ","
 noremap <Leader>e :quit<CR>  " Quit current window
 noremap <Leader>E :qa!<CR>   " Quit all windows
 
+set bs=2
+
 " " easier moving between tabs
 map <Leader>k <esc>:tabprevious<CR>
 map <Leader>l <esc>:tabnext<CR>
+" "Uncomment for qwerty"
+" " map <Leader>n <esc>:tabprevious<CR>
+" " map <Leader>m <esc>:tabnext<CR>
 
 " " easier moving of code blocks
 " " Try to go into visual mode (v), thenselect several lines of code here and
 " " then press ``>`` several times.
 vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation
+
+
+" Show whitespace
+" MUST be inserted BEFORE the colorscheme command
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+au InsertLeave * match ExtraWhitespace /\s\+$/
+
 
 " " Color scheme
 " " mkdir -p ~/.vim/colors && cd ~/.vim/colors
@@ -50,7 +62,7 @@ highlight ColorColumn ctermbg=233
 set history=700
 set undolevels=700
 
-" " Tabs 
+" " Tabs
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -80,6 +92,8 @@ execute pathogen#infect()
 " ============================================================================
 " "" vim airline
 " git clone https://github.com/bling/vim-airline ~/.vim/bundle/vim-airline
+" "" set laststatus=2
+
 
 " " Settings for ctrlp
 " " cd ~/.vim/bundle
@@ -88,3 +102,14 @@ execute pathogen#infect()
 " "" set wildignore+=*.pyc
 " "" set wildignore+=*_build/*
 " "" set wildignore+=*/coverage/*
+
+
+" Python folding
+" mkdir -p ~/.vim/ftplugin
+" wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
+" "" set nofoldenable
+
+" GitGutter (signs for modifications)
+" cd ~/.vim/bundle
+" git clone git://github.com/airblade/vim-gitgutter.git
+
