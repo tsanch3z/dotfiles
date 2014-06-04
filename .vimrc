@@ -94,6 +94,7 @@ execute pathogen#infect()
 " git clone https://github.com/bling/vim-airline ~/.vim/bundle/vim-airline
 " "" set laststatus=2
 " "" let g:airline#extensions#tabline#enabled = 1
+" "" set ttimeoutlen=50
 
 " " Settings for ctrlp
 " " cd ~/.vim/bundle
