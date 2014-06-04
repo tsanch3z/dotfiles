@@ -1,22 +1,28 @@
-autoload -U compinit promptinit
+autoload -U compinit
 compinit
-promptinit
 
-# This will set the default prompt to the walters theme
-prompt elite
+export EDITOR=vim
 
-#avoid duplicates history lines
-setopt HIST_IGNORE_DUPS
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.history
+setopt hist_ignore_all_dups
+bindkey '^R' history-incremental-search-backward
 
-# some more ls aliases
+setopt autocd
+
+# Aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-
-## Install liquidprompt then uncomment
-#source liquidprompt
 
 # pip should only run if there is a virtualenv currently activated
 export PIP_REQUIRE_VIRTUALENV=true
 # # cache pip-installed packages to avoid re-downloading
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
+
+# Install plugins via antigen
+#curl https://raw.github.com/zsh-users/antigen/master/antigen.zsh > antigen.zsh
+##source antigen.zsh
+
+##antigen bundle nojhan/liquidprompt
