@@ -105,6 +105,8 @@ execute pathogen#infect()
 
 " " cd ~/.vim/bundle/ && git clone --recursive
 " https://github.com/davidhalter/jedi-vim.git
+" "" let g:jedi#popup_on_dot = 0
+" "" let g:jedi#popup_select_first = 0
 
 " Python folding
 " mkdir -p ~/.vim/ftplugin
