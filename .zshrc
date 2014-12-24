@@ -22,7 +22,10 @@ export PIP_REQUIRE_VIRTUALENV=true
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 
 # Install plugins via antigen
-#curl https://raw.github.com/zsh-users/antigen/master/antigen.zsh > antigen.zsh
-##source antigen.zsh
+# git clone https://github.com/zsh-users/antigen.git ~
+## source ~/antigen/antigen.zsh
 
-##antigen bundle nojhan/liquidprompt
+## antigen bundle nojhan/liquidprompt
+## antigen bundle unixorn/autoupdate-antigen.zshplugin
+
+## antigen apply
