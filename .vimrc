@@ -1,5 +1,17 @@
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
 " " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
+
+" " no compatible with vi
+set nocompatible
+
+" " no modelines
+set modelines=0
+
+set relativenumber
+set undofile
 
 " " Better copy & paste
 " " When you want to paste large blocks of code into vim, press F2 before you
@@ -8,8 +20,28 @@ autocmd! bufwritepost .vimrc source %
 set pastetoggle=<F2>
 set clipboard=unnamed
 
+set scrolloff=10
+
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+vnoremap <up> <nop>
+vnoremap <down> <nop>
+vnoremap <left> <nop>
+vnoremap <right> <nop>
+
+nnoremap ; :
+
 " " Rebind <Leader> key
 let mapleader = ","
+
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+
+inoremap ;; <ESC>
+vnoremap ;; <ESC>
 
 " " Quick quit command
 noremap <Leader>e :quit<CR>  " Quit current window
@@ -18,11 +50,8 @@ noremap <Leader>E :qa!<CR>   " Quit all windows
 set bs=2
 
 " " easier moving between tabs
-map <Leader>k <esc>:tabprevious<CR>
-map <Leader>l <esc>:tabnext<CR>
-" "Uncomment for qwerty"
-" " map <Leader>n <esc>:tabprevious<CR>
-" " map <Leader>m <esc>:tabnext<CR>
+map <Leader>j <esc>:tabprevious<CR>
+map <Leader>k <esc>:tabnext<CR>
 
 " " easier moving of code blocks
 " " Try to go into visual mode (v), thenselect several lines of code here and
@@ -30,24 +59,13 @@ map <Leader>l <esc>:tabnext<CR>
 vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation
 
-
-" Show whitespace
-" MUST be inserted BEFORE the colorscheme command
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertLeave * match ExtraWhitespace /\s\+$/
-
-
-" " Color scheme
-" " mkdir -p ~/.vim/colors && cd ~/.vim/colors
-" " wget -O wombat256mod.vim
-" http://www.vim.org/scripts/download_script.php?src_id=13400
-set t_Co=256
-color wombat256mod
+noremap <C-n> :nohl<CR>
+vnoremap <C-n> :nohl<CR>
+inoremap <C-n> :nohl<CR>
 
 " " Enable syntax highlighting
 " " You need to reload this file for the change to apply
 filetype off
-filetype plugin indent on
 syntax on
 
 " " Showing line numbers and length
@@ -56,7 +74,6 @@ set tw=79   " width of document (used by gd)
 set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
 set colorcolumn=80
-highlight ColorColumn ctermbg=233
 
 " " Useful settings
 set history=700
@@ -80,40 +97,59 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" " Setup Pathogen
-" " mkdir -p ~/.vim/autoload ~/.vim/bundle
-" " wget https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
-" " Install any plugin into a .vim/bundle/plugin-name/ folder
-execute pathogen#infect()
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-" ============================================================================
-" " Plugins
-" "
-" ============================================================================
-" "" vim airline
-" git clone https://github.com/bling/vim-airline ~/.vim/bundle/vim-airline
-" "" set laststatus=2
-" "" let g:airline#extensions#tabline#enabled = 1
-" "" set ttimeoutlen=50
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
 
-" " Settings for ctrlp
-" " cd ~/.vim/bundle
-" " git clone https://github.com/kien/ctrlp.vim.git
-" "" let g:ctrlp_max_height = 30
-" "" set wildignore+=*.pyc
-" "" set wildignore+=*_build/*
-" "" set wildignore+=*/coverage/*
+Plugin 'kien/ctrlp.vim'
 
-" " cd ~/.vim/bundle/ && git clone --recursive
-" https://github.com/davidhalter/jedi-vim.git
-" "" let g:jedi#popup_on_dot = 0
-" "" let g:jedi#popup_select_first = 0
+Plugin 'wombat256.vim'
 
-" Python folding
-" mkdir -p ~/.vim/ftplugin
-" wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
-" "" set nofoldenable
+Plugin 'bling/vim-airline'
 
-" GitGutter (signs for modifications)
-" cd ~/.vim/bundle
-" git clone git://github.com/airblade/vim-gitgutter.git
+Plugin 'airblade/vim-gitgutter'
+
+Plugin 'Valloric/YouCompleteMe'
+
+Plugin 'scrooloose/syntastic'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" Set 256 color mode, use wombat theme
+set t_Co=256
+color wombat256mod
+
+" Highlight trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+" Set 80 char line to black color
+highlight ColorColumn ctermbg=black
+
+" Configure airline
+set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 0
+set ttimeoutlen=50
+let g:airline_theme='wombat'
+
+" Configure ctrlp
+let g:ctrlp_max_height = 30
+set wildignore+=*.pyc
+set wildignore+=*_build/*
+set wildignore+=*/coverage/*
+set wildignore+=*/.*
+
+" Configure YCM
+nnoremap <leader>g :YcmCompleter GoTo<CR>
