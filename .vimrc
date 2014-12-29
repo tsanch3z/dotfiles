@@ -49,9 +49,9 @@ noremap <Leader>E :qa!<CR>   " Quit all windows
 
 set bs=2
 
-" " easier moving between tabs
-map <Leader>j <esc>:tabprevious<CR>
-map <Leader>k <esc>:tabnext<CR>
+" " easier moving between buffers
+map <Leader>j <esc>:bp<CR>
+map <Leader>k <esc>:bn<CR>
 
 " " easier moving of code blocks
 " " Try to go into visual mode (v), thenselect several lines of code here and
@@ -74,6 +74,11 @@ set tw=79   " width of document (used by gd)
 set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
 set colorcolumn=80
+set autoindent
+
+" " Easier split
+set splitbelow
+set splitright
 
 " " Useful settings
 set history=700
@@ -85,6 +90,7 @@ set softtabstop=4
 set shiftwidth=4
 set shiftround
 set expandtab
+set smartindent
 
 " " Make search case insensitive
 set hlsearch
@@ -118,6 +124,10 @@ Plugin 'Valloric/YouCompleteMe'
 
 Plugin 'scrooloose/syntastic'
 
+Plugin 'tsanch3z/indent-python.vim'
+
+Plugin 'tpope/vim-surround'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -139,10 +149,13 @@ highlight ColorColumn ctermbg=black
 
 " Configure airline
 set laststatus=2
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+" List buffers and tab
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 0
-set ttimeoutlen=50
 let g:airline_theme='wombat'
+set ttimeoutlen=50
 
 " Configure ctrlp
 let g:ctrlp_max_height = 30
