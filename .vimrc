@@ -31,8 +31,6 @@ vnoremap <down> <nop>
 vnoremap <left> <nop>
 vnoremap <right> <nop>
 
-nnoremap ; :
-
 " " Rebind <Leader> key
 let mapleader = ","
 
@@ -40,12 +38,13 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-inoremap ;; <ESC>
-vnoremap ;; <ESC>
+inoremap jj <ESC>
 
 " " Quick quit command
 noremap <Leader>e :quit<CR>  " Quit current window
 noremap <Leader>E :qa!<CR>   " Quit all windows
+noremap <Leader>w :w<CR>
+noremap <Leader>wa :wa<CR>
 
 set bs=2
 
@@ -128,6 +127,16 @@ Plugin 'tsanch3z/indent-python.vim'
 
 Plugin 'tpope/vim-surround'
 
+Plugin 'pangloss/vim-javascript'
+
+Plugin 'editorconfig/editorconfig-vim'
+
+Plugin 'scrooloose/nerdcommenter'
+
+Plugin 'marijnh/tern_for_vim'
+
+Plugin 'Raimondi/delimitMate'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -135,6 +144,8 @@ filetype plugin indent on    " required
 " Set 256 color mode, use wombat theme
 set t_Co=256
 color wombat256mod
+
+let g:NERDSpaceDelims = 1
 
 " Highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
