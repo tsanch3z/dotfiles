@@ -23,9 +23,14 @@ export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 
 # Install plugins via antigen
 # git clone https://github.com/zsh-users/antigen.git ~
-## source ~/antigen/antigen.zsh
+source ~/Dev/antigen/antigen.zsh
 
-## antigen bundle nojhan/liquidprompt
-## antigen bundle unixorn/autoupdate-antigen.zshplugin
+antigen use oh-my-zsh
 
-## antigen apply
+antigen bundle unixorn/autoupdate-antigen.zshplugin
+antigen bundle git
+antigen bundle meteor
+
+antigen theme robbyrussell
+
+antigen apply
