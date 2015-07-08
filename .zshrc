@@ -23,7 +23,7 @@ export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 
 # Install plugins via antigen
 # git clone https://github.com/zsh-users/antigen.git ~
-source ~/Dev/antigen/antigen.zsh
+source ~/antigen/antigen.zsh
 
 antigen use oh-my-zsh
 
