@@ -44,6 +44,7 @@ inoremap jj <ESC>
 noremap <Leader>e :quit<CR>  " Quit current window
 noremap <Leader>E :qa!<CR>   " Quit all windows
 noremap <Leader>w :w<CR>
+inoremap <Leader>w <ESC>:w<CR>
 noremap <Leader>wa :wa<CR>
 
 set bs=2
