@@ -62,8 +62,8 @@ nnoremap <leader>r :redraw!<CR>
 set bs=2
 
 " " Easier moving between buffers
-nnoremap <TAB> :bp<CR>
-nnoremap <S-TAB> :bn<CR>
+nnoremap <TAB> :bn<CR>
+nnoremap <S-TAB> :bp<CR>
 
 " " Easy window movement
 nnoremap <c-h> <c-w>h
