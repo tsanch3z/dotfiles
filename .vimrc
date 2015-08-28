@@ -41,17 +41,35 @@ vnoremap <F1> <ESC>
 inoremap jj <ESC>
 
 " " Quick quit command
-noremap <Leader>e :quit<CR>  " Quit current window
-noremap <Leader>E :qa!<CR>   " Quit all windows
-noremap <Leader>w :w<CR>
+nnoremap <Leader>e :quit<CR>  " Quit current window
+nnoremap <Leader>E :qa!<CR>   " Quit all windows
+
+" " Quick save commmand
+nnoremap <Leader>w :w<CR>
 inoremap <Leader>w <ESC>:w<CR>
 noremap <Leader>wa :wa<CR>
 
+" " Quick save as root
+nnoremap <leader>wr <ESC>:w !sudo tee % > /dev/null<CR>
+
+" " Quick save and exit command
+nnoremap <Leader>q :wq<CR>
+inoremap <Leader>q <ESC>:wq<CR>
+
+" " Quick redraw command
+nnoremap <leader>r :redraw!<CR>
+
 set bs=2
 
-" " easier moving between buffers
-map <Leader>j <esc>:bp<CR>
-map <Leader>k <esc>:bn<CR>
+" " Easier moving between buffers
+nnoremap <TAB> :bp<CR>
+nnoremap <S-TAB> :bn<CR>
+
+" " Easy window movement
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
 
 " " easier moving of code blocks
 " " Try to go into visual mode (v), thenselect several lines of code here and
