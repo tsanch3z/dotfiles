@@ -1,0 +1,131 @@
+[{
+    "keys": [",", ","],
+    "command": "exit_insert_mode",
+    "context": [{
+        "key": "setting.command_mode",
+        "operand": false
+    }, {
+        "key": "setting.is_widget",
+        "operand": false
+    }]
+}, {
+    "keys": ["right"],
+    "command": "null"
+}, {
+    "keys": ["left"],
+    "command": "null"
+}, {
+    "keys": ["up"],
+    "command": "null"
+}, {
+    "keys": ["down"],
+    "command": "null"
+}, {
+    "keys": [",", "f"],
+    "command": "js_format",
+    "context": [{
+        "key": "selector",
+        "operator": "equal",
+        "operand": "source.json"
+    }]
+}, {
+    "keys": [",", "f"],
+    "command": "js_format",
+    "context": [{
+        "key": "selector",
+        "operator": "equal",
+        "operand": "source.javascript"
+    }]
+}, {
+    "keys": ["shift+tab"],
+    "command": "prev_view",
+    "context": [{
+        "key": "setting.command_mode",
+        "operand": true
+    }, {
+        "key": "setting.is_widget",
+        "operand": false
+    }]
+}, {
+    "keys": ["tab"],
+    "command": "next_view",
+    "context": [{
+        "key": "setting.command_mode",
+        "operand": true
+    }, {
+        "key": "setting.is_widget",
+        "operand": false
+    }]
+}, {
+    "keys": [",", "E"],
+    "command": "close_all"
+}, {
+    "keys": [",", "w"],
+    "command": "save"
+}, {
+    "keys": [",", "q"],
+    "command": "close"
+}, {
+    "keys": [",", "a"],
+    "command": "save_all"
+}, {
+    "keys": ["ctrl+l"],
+    "command": "move_group_focus",
+    "args": {
+        "direction": "right"
+    }
+}, {
+    "keys": ["ctrl+h"],
+    "command": "move_group_focus",
+    "args": {
+        "direction": "left"
+    }
+}, {
+    "keys": ["ctrl+j"],
+    "command": "move",
+    "args": {
+        "by": "lines",
+        "forward": true
+    },
+    "context": [{
+        "key": "overlay_visible",
+        "operator": "equal",
+        "operand": true
+    }]
+}, {
+    "keys": ["ctrl+k"],
+    "command": "move",
+    "args": {
+        "by": "lines",
+        "forward": false
+    },
+    "context": [{
+        "key": "overlay_visible",
+        "operator": "equal",
+        "operand": true
+    }]
+}, {
+    "keys": ["tab"],
+    "command": "move",
+    "args": {
+        "by": "lines",
+        "forward": true
+    },
+    "context": [{
+        "key": "auto_complete_visible",
+        "operator": "equal",
+        "operand": true
+    }]
+}, {
+    "keys": ["shift+tab"],
+    "command": "move",
+    "args": {
+        "by": "lines",
+        "forward": false
+    },
+    "context": [{
+        "key": "auto_complete_visible",
+        "operator": "equal",
+        "operand": true
+    }]
+}]
