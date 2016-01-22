@@ -38,7 +38,7 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-inoremap jj <ESC>
+inoremap ,, <ESC>
 
 " " Quick quit command
 nnoremap <Leader>e :quit<CR>  " Quit current window
@@ -142,6 +142,8 @@ Plugin 'Valloric/YouCompleteMe'
 
 Plugin 'scrooloose/syntastic'
 
+Plugin 'jelera/vim-javascript-syntax'
+
 Plugin 'tsanch3z/indent-python.vim'
 
 Plugin 'tpope/vim-surround'
@@ -165,6 +167,8 @@ set t_Co=256
 color wombat256mod
 
 let g:NERDSpaceDelims = 1
+
+let g:syntastic_javascript_checkers=['jscs', 'jshint']
 
 " Highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -193,6 +197,42 @@ set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
 set wildignore+=*/.*
+
+" Restore cursor position, window position, and last search after running a
+" command.
+function! Preserve(command)
+    " Save the last search.
+    let search = @/
+
+    " Save the current cursor position.
+    let cursor_position = getpos('.')
+
+    " Save the current window position.
+    normal! H
+    let window_position = getpos('.')
+    call setpos('.', cursor_position)
+
+    " Execute the command.
+    execute a:command
+
+    " Restore the last search.
+    let @/ = search
+
+    " Restore the previous window position.
+    call setpos('.', window_position)
+    normal! zt
+
+    " Restore the previous cursor position.
+    call setpos('.', cursor_position)
+endfunction
+
+" Re-indent the whole buffer.
+function! Indent()
+    call Preserve('normal gg=G')
+endfunction
+
+autocmd FileType javascript setlocal equalprg=js-beautify\ -f\ -
+autocmd BufWritePre *.js call Indent()
 
 " Configure YCM
 nnoremap <leader>g :YcmCompleter GoTo<CR>
