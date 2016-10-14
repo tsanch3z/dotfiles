@@ -5,15 +5,21 @@
 	],
 	"installed_packages":
 	[
+		"All Autocomplete",
+		"Chain of Command",
 		"EditorConfig",
+		"Handlebars",
 		"JavaScriptNext - ES6 Syntax",
+		"Jedi - Python autocompletion",
 		"JsFormat",
+		"MarkdownEditing",
 		"Package Control",
 		"SublimeLinter",
+		"SublimeLinter-flake8",
 		"SublimeLinter-jscs",
 		"SublimeLinter-jshint",
 		"Surround",
-		"tern_for_sublime",
+		"Theme - Soda",
 		"Vintage Surround"
 	]
 }

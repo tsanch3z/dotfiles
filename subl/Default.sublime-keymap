@@ -61,7 +61,13 @@
     "command": "close_all"
 }, {
     "keys": [",", "w"],
-    "command": "save"
+    "command": "chain",
+    "args": {
+        "commands": [
+            ["save"],
+            ["exit_insert_mode"]
+        ]
+    }
 }, {
     "keys": [",", "q"],
     "command": "close"
