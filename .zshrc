@@ -20,17 +20,17 @@ alias l='ls -CF'
 export PIP_REQUIRE_VIRTUALENV=true
 # # cache pip-installed packages to avoid re-downloading
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
+export LANG=en_US.UTF-8
 
 # Install plugins via antigen
 # git clone https://github.com/zsh-users/antigen.git ~
 source ~/antigen/antigen.zsh
 
-antigen use oh-my-zsh
-
 antigen bundle unixorn/autoupdate-antigen.zshplugin
 antigen bundle git
-antigen bundle meteor
-
-antigen theme robbyrussell
 
 antigen apply
+
+antigen use oh-my-zsh
+
+antigen theme robbyrussell
