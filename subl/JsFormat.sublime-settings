@@ -1,4 +1,5 @@
 {
+    "e4x": true,
 	"jsbeautifyrc_files": true,
 	"format_on_save": true
 }

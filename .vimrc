@@ -2,7 +2,10 @@ autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " " Automatic reloading of .vimrc
-autocmd! bufwritepost .vimrc source %
+autocmd! bufwritepost $MYVIMRC source $MYVIMRC
+
+" Vue syntax highligting
+autocmd BufNewFile,BufRead *.vue set ft=vue
 
 " " no compatible with vi
 set nocompatible
@@ -10,7 +13,6 @@ set nocompatible
 " " no modelines
 set modelines=0
 
-set relativenumber
 set undofile
 
 " " Better copy & paste
@@ -134,11 +136,11 @@ Plugin 'kien/ctrlp.vim'
 
 Plugin 'wombat256.vim'
 
+Plugin 'vim-airline/vim-airline-themes'
+
 Plugin 'bling/vim-airline'
 
 Plugin 'airblade/vim-gitgutter'
-
-Plugin 'Valloric/YouCompleteMe'
 
 Plugin 'scrooloose/syntastic'
 
@@ -150,11 +152,11 @@ Plugin 'tpope/vim-surround'
 
 Plugin 'pangloss/vim-javascript'
 
+Plugin 'posva/vim-vue'
+
 Plugin 'editorconfig/editorconfig-vim'
 
 Plugin 'scrooloose/nerdcommenter'
-
-Plugin 'marijnh/tern_for_vim'
 
 Plugin 'Raimondi/delimitMate'
 
@@ -168,7 +170,7 @@ color wombat256mod
 
 let g:NERDSpaceDelims = 1
 
-let g:syntastic_javascript_checkers=['jscs', 'jshint']
+let g:syntastic_javascript_checkers=['eslint']
 
 " Highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -193,46 +195,8 @@ set ttimeoutlen=50
 
 " Configure ctrlp
 let g:ctrlp_max_height = 30
+set wildignore+=*/node_modules
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
 set wildignore+=*/.*
-
-" Restore cursor position, window position, and last search after running a
-" command.
-function! Preserve(command)
-    " Save the last search.
-    let search = @/
-
-    " Save the current cursor position.
-    let cursor_position = getpos('.')
-
-    " Save the current window position.
-    normal! H
-    let window_position = getpos('.')
-    call setpos('.', cursor_position)
-
-    " Execute the command.
-    execute a:command
-
-    " Restore the last search.
-    let @/ = search
-
-    " Restore the previous window position.
-    call setpos('.', window_position)
-    normal! zt
-
-    " Restore the previous cursor position.
-    call setpos('.', cursor_position)
-endfunction
-
-" Re-indent the whole buffer.
-function! Indent()
-    call Preserve('normal gg=G')
-endfunction
-
-autocmd FileType javascript setlocal equalprg=js-beautify\ -f\ -
-autocmd BufWritePre *.js call Indent()
-
-" Configure YCM
-nnoremap <leader>g :YcmCompleter GoTo<CR>

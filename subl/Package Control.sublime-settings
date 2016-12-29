@@ -7,10 +7,10 @@
 	[
 		"All Autocomplete",
 		"Chain of Command",
+		"Babel",
 		"EditorConfig",
 		"Handlebars",
 		"JavaScriptNext - ES6 Syntax",
-		"Jedi - Python autocompletion",
 		"JsFormat",
 		"MarkdownEditing",
 		"Package Control",
@@ -20,6 +20,7 @@
 		"SublimeLinter-jshint",
 		"Surround",
 		"Theme - Soda",
+		"Theme - Monokai",
 		"Vintage Surround"
 	]
 }
