@@ -81,7 +81,6 @@ vnoremap > >gv  " better indentation
 
 noremap <C-n> :nohl<CR>
 vnoremap <C-n> :nohl<CR>
-inoremap <C-n> :nohl<CR>
 
 " " Enable syntax highlighting
 " " You need to reload this file for the change to apply
@@ -136,9 +135,9 @@ Plugin 'kien/ctrlp.vim'
 
 Plugin 'wombat256.vim'
 
-Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-airline/vim-airline'
 
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 Plugin 'airblade/vim-gitgutter'
 
@@ -150,6 +149,8 @@ Plugin 'tsanch3z/indent-python.vim'
 
 Plugin 'tpope/vim-surround'
 
+Plugin 'tpope/vim-obsession'
+
 Plugin 'pangloss/vim-javascript'
 
 Plugin 'posva/vim-vue'
@@ -159,6 +160,10 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'scrooloose/nerdcommenter'
 
 Plugin 'Raimondi/delimitMate'
+
+Plugin 'edkolev/tmuxline.vim'
+
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -171,6 +176,7 @@ color wombat256mod
 let g:NERDSpaceDelims = 1
 
 let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_python_python_exec = 'python'
 
 " Highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -189,6 +195,7 @@ set laststatus=2
 let g:airline#extensions#tabline#fnamemod = ':t'
 " List buffers and tab
 let g:airline#extensions#tabline#enabled = 1
+let g:tmuxline_powerline_separators = 0
 let g:airline_powerline_fonts = 0
 let g:airline_theme='wombat'
 set ttimeoutlen=50
@@ -199,4 +206,6 @@ set wildignore+=*/node_modules
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
-set wildignore+=*/.*
+
+" Remove trailing spaces
+autocmd FileType javascript,python autocmd BufWritePre <buffer> :%s/\s\+$//e
