@@ -1,5 +1,4 @@
-autoload -U compinit
-compinit
+autoload -Uz compinit && compinit -i
 
 export EDITOR=vim
 
@@ -7,6 +6,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.history
 setopt hist_ignore_all_dups
+setopt histignorespace
 bindkey '^R' history-incremental-search-backward
 
 setopt autocd
@@ -15,6 +15,7 @@ setopt autocd
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias tmux='tmux -2'
 
 # pip should only run if there is a virtualenv currently activated
 export PIP_REQUIRE_VIRTUALENV=true
@@ -26,13 +27,25 @@ export LANG=en_US.UTF-8
 # git clone https://github.com/zsh-users/antigen.git ~
 source ~/antigen/antigen.zsh
 
-antigen bundle unixorn/autoupdate-antigen.zshplugin
-antigen bundle git
-
-antigen apply
-
 antigen use oh-my-zsh
 
+antigen bundle unixorn/autoupdate-antigen.zshplugin
+
+antigen bundle git
+antigen bundle virtualenvwrapper
+
+antigen apply
 antigen theme robbyrussell
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+export PROJECT_HOME=$HOME/Dev
+source virtualenvwrapper.sh
+
+bindkey -v
+export KEYTIMEOUT=1
+
+fpath=(~/.zsh/completion $fpath)
+
+if command -v workon_cwd > /dev/null ; then
+    workon_cwd
+fi
