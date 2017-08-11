@@ -51,6 +51,10 @@ nnoremap <Leader>w :w<CR>
 inoremap <Leader>w <ESC>:w<CR>
 noremap <Leader>wa :wa<CR>
 
+" " Bdelete Shortcut
+nnoremap <Leader>rm :bdelete<CR>
+noremap <Leader>rma :%bdelete<CR>
+
 " " Quick save as root
 nnoremap <leader>wr <ESC>:w !sudo tee % > /dev/null<CR>
 
@@ -208,4 +212,9 @@ set wildignore+=*_build/*
 set wildignore+=*/coverage/*
 
 " Remove trailing spaces
-autocmd FileType javascript,python autocmd BufWritePre <buffer> :%s/\s\+$//e
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+autocmd FileType javascript,python autocmd BufWritePre <buffer> :call TrimWhitespace()

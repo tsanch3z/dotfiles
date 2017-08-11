@@ -31,11 +31,15 @@ antigen use oh-my-zsh
 
 antigen bundle unixorn/autoupdate-antigen.zshplugin
 
+antigen bundle docker
+antigen bundle docker-compose
 antigen bundle git
+antigen bundle git-flow
 antigen bundle virtualenvwrapper
 
 antigen apply
 antigen theme robbyrussell
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 export PROJECT_HOME=$HOME/Dev
