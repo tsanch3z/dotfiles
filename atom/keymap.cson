@@ -49,3 +49,7 @@
   ', w': 'core:save'
   ', w a': 'window:save-all'
   ', r m': 'pane:close'
+
+'atom-workspace':
+  'ctrl-shift-up': 'user:activate-vim-mode-plus'
+  'ctrl-shift-down': 'user:deactivate-vim-mode-plus'
