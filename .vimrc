@@ -92,7 +92,7 @@ filetype off
 syntax on
 
 " " Showing line numbers and length
-set number  " show line numbers
+set relativenumber  " show line numbers
 set tw=79   " width of document (used by gd)
 set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
@@ -145,7 +145,7 @@ Plugin 'vim-airline/vim-airline-themes'
 
 Plugin 'airblade/vim-gitgutter'
 
-Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 
 Plugin 'jelera/vim-javascript-syntax'
 
@@ -157,8 +157,6 @@ Plugin 'tpope/vim-obsession'
 
 Plugin 'pangloss/vim-javascript'
 
-Plugin 'posva/vim-vue'
-
 Plugin 'editorconfig/editorconfig-vim'
 
 Plugin 'scrooloose/nerdcommenter'
@@ -168,6 +166,9 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'edkolev/tmuxline.vim'
 
 Plugin 'Valloric/YouCompleteMe'
+
+Plugin 'takac/vim-hardtime'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -210,6 +211,8 @@ set wildignore+=*/node_modules
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
+
+let g:hardtime_default_on = 1
 
 " Remove trailing spaces
 fun! TrimWhitespace()
