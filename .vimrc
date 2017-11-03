@@ -92,6 +92,7 @@ filetype off
 syntax on
 
 " " Showing line numbers and length
+set nu  " show line numbers
 set relativenumber  " show line numbers
 set tw=79   " width of document (used by gd)
 set nowrap  " don't automatically wrap on load
@@ -137,7 +138,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'kien/ctrlp.vim'
 
-Plugin 'wombat256.vim'
+Plugin 'junegunn/seoul256.vim'
 
 Plugin 'vim-airline/vim-airline'
 
@@ -147,8 +148,6 @@ Plugin 'airblade/vim-gitgutter'
 
 Plugin 'w0rp/ale'
 
-Plugin 'jelera/vim-javascript-syntax'
-
 Plugin 'tsanch3z/indent-python.vim'
 
 Plugin 'tpope/vim-surround'
@@ -156,6 +155,10 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-obsession'
 
 Plugin 'pangloss/vim-javascript'
+
+Plugin 'jelera/vim-javascript-syntax'
+
+Plugin 'maxmellon/vim-jsx-pretty'
 
 Plugin 'editorconfig/editorconfig-vim'
 
@@ -174,14 +177,18 @@ Plugin 'takac/vim-hardtime'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" Set 256 color mode, use wombat theme
+" Set 256 color mode, and theme
 set t_Co=256
-color wombat256mod
+let g:seoul256_background = 234
+color seoul256
+
 
 let g:NERDSpaceDelims = 1
 
 let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_python_python_exec = 'python'
+
+" let g:vim_jsx_pretty_colorful_config = 1
 
 " Highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -202,11 +209,12 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#enabled = 1
 let g:tmuxline_powerline_separators = 0
 let g:airline_powerline_fonts = 0
-let g:airline_theme='wombat'
+let g:airline_theme='zenburn'
 set ttimeoutlen=50
 
 " Configure ctrlp
 let g:ctrlp_max_height = 30
+let g:ctrlp_show_hidden = 1
 set wildignore+=*/node_modules
 set wildignore+=*.pyc
 set wildignore+=*_build/*
