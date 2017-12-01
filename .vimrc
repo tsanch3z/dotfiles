@@ -160,6 +160,8 @@ Plugin 'jelera/vim-javascript-syntax'
 
 Plugin 'maxmellon/vim-jsx-pretty'
 
+Plugin 'alvan/vim-closetag'
+
 Plugin 'editorconfig/editorconfig-vim'
 
 Plugin 'scrooloose/nerdcommenter'
@@ -188,7 +190,10 @@ let g:NERDSpaceDelims = 1
 let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_python_python_exec = 'python'
 
-" let g:vim_jsx_pretty_colorful_config = 1
+let g:vim_jsx_pretty_colorful_config = 1
+
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js'
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx, *.js'
 
 " Highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
