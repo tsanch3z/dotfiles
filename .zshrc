@@ -46,10 +46,12 @@ export PROJECT_HOME=$HOME/Dev
 source virtualenvwrapper.sh
 
 bindkey -v
-export KEYTIMEOUT=1
+export KEYTIMEOUT=25
 
 fpath=(~/.zsh/completion $fpath)
 
 if command -v workon_cwd > /dev/null ; then
     workon_cwd
 fi
+
+bindkey ,, vi-cmd-mode
