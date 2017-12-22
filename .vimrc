@@ -234,3 +234,7 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 autocmd FileType javascript,python autocmd BufWritePre <buffer> :call TrimWhitespace()
+
+if v:version > 703 || v:version == 703 && has('patch541')
+  set formatoptions+=j
+endif
