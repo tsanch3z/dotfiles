@@ -2,7 +2,7 @@ autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " " Automatic reloading of .vimrc
-autocmd! bufwritepost $MYVIMRC source $MYVIMRC
+autocmd! bufwritepost .vimrc source %
 
 " Vue syntax highligting
 autocmd BufNewFile,BufRead *.vue set ft=vue
@@ -24,21 +24,17 @@ set clipboard=unnamed
 
 set scrolloff=10
 
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-vnoremap <up> <nop>
-vnoremap <down> <nop>
-vnoremap <left> <nop>
-vnoremap <right> <nop>
-
 " " Rebind <Leader> key
 let mapleader = ","
 
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
+inoremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+noremap <Up> <Nop>
 
 inoremap ,, <ESC>
 
@@ -136,7 +132,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 Plugin 'junegunn/seoul256.vim'
 
@@ -171,8 +167,6 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'edkolev/tmuxline.vim'
 
 Plugin 'Valloric/YouCompleteMe'
-
-Plugin 'takac/vim-hardtime'
 
 
 " All of your Plugins must be added before the following line
@@ -224,8 +218,6 @@ set wildignore+=*/node_modules
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
-
-let g:hardtime_default_on = 1
 
 " Remove trailing spaces
 fun! TrimWhitespace()
