@@ -45,7 +45,8 @@ nnoremap <Leader>E :qa!<CR>   " Quit all windows
 " " Quick save commmand
 nnoremap <Leader>w :w<CR>
 inoremap <Leader>w <ESC>:w<CR>
-noremap <Leader>wa :wa<CR>
+noremap <Leader>W :wa<CR>
+noremap <Leader>W <ESC>:wa<CR>
 
 " " Bdelete Shortcut
 nnoremap <Leader>rm :bdelete<CR>
@@ -140,33 +141,29 @@ Plugin 'vim-airline/vim-airline'
 
 Plugin 'vim-airline/vim-airline-themes'
 
-Plugin 'airblade/vim-gitgutter'
-
-Plugin 'w0rp/ale'
-
-Plugin 'tsanch3z/indent-python.vim'
+Plugin 'edkolev/tmuxline.vim'
 
 Plugin 'tpope/vim-surround'
 
 Plugin 'tpope/vim-obsession'
 
+Plugin 'airblade/vim-gitgutter'
+
+Plugin 'tsanch3z/indent-python.vim'
+
+Plugin 'alvan/vim-closetag'
+
 Plugin 'pangloss/vim-javascript'
 
 Plugin 'jelera/vim-javascript-syntax'
 
-Plugin 'maxmellon/vim-jsx-pretty'
+Plugin 'scrooloose/nerdcommenter'
 
-Plugin 'alvan/vim-closetag'
+Plugin 'maxmellon/vim-jsx-pretty'
 
 Plugin 'editorconfig/editorconfig-vim'
 
-Plugin 'scrooloose/nerdcommenter'
-
 Plugin 'Raimondi/delimitMate'
-
-Plugin 'edkolev/tmuxline.vim'
-
-Plugin 'Valloric/YouCompleteMe'
 
 
 " All of your Plugins must be added before the following line
@@ -178,11 +175,7 @@ set t_Co=256
 let g:seoul256_background = 234
 color seoul256
 
-
 let g:NERDSpaceDelims = 1
-
-let g:syntastic_javascript_checkers=['eslint']
-let g:syntastic_python_python_exec = 'python'
 
 let g:vim_jsx_pretty_colorful_config = 1
 
@@ -210,6 +203,9 @@ let g:tmuxline_powerline_separators = 0
 let g:airline_powerline_fonts = 0
 let g:airline_theme='zenburn'
 set ttimeoutlen=50
+
+" Use editorconfig external as +python3 breaks the integration
+let g:EditorConfig_core_mode="external_command"
 
 " Configure ctrlp
 let g:ctrlp_max_height = 30
