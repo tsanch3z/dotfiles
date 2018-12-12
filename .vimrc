@@ -135,13 +135,9 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'ctrlpvim/ctrlp.vim'
 
-Plugin 'junegunn/seoul256.vim'
+Plugin 'arcticicestudio/nord-vim'
 
 Plugin 'vim-airline/vim-airline'
-
-Plugin 'vim-airline/vim-airline-themes'
-
-Plugin 'edkolev/tmuxline.vim'
 
 Plugin 'tpope/vim-surround'
 
@@ -172,8 +168,7 @@ filetype plugin indent on    " required
 
 " Set 256 color mode, and theme
 set t_Co=256
-let g:seoul256_background = 234
-color seoul256
+colorscheme nord
 
 let g:NERDSpaceDelims = 1
 
@@ -199,9 +194,7 @@ set laststatus=2
 let g:airline#extensions#tabline#fnamemod = ':t'
 " List buffers and tab
 let g:airline#extensions#tabline#enabled = 1
-let g:tmuxline_powerline_separators = 0
-let g:airline_powerline_fonts = 0
-let g:airline_theme='zenburn'
+let g:airline_powerline_fonts = 1
 set ttimeoutlen=50
 
 " Use editorconfig external as +python3 breaks the integration

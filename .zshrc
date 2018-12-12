@@ -36,9 +36,10 @@ antigen bundle docker-compose
 antigen bundle git
 antigen bundle git-flow
 antigen bundle virtualenvwrapper
+antigen bundle yarn
 
-antigen apply
 antigen theme robbyrussell
+antigen apply
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
@@ -55,3 +56,5 @@ if command -v workon_cwd > /dev/null ; then
 fi
 
 bindkey ,, vi-cmd-mode
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
