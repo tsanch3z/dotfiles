@@ -1,0 +1,137 @@
+{
+    "vim.leader": ",",
+    "editor.cursorStyle": "block",
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "<leader>",
+                "<leader>"
+            ],
+            "after": [
+                "<esc>"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "w"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.files.save",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "q"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.closeActiveEditor",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "E"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.closeAllEditors",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "W"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.files.saveAll",
+                    "args": []
+                }
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "<C-n>"
+            ],
+            "commands": [
+                {
+                    "command": ":nohl",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "w"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.files.save",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "q"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.closeActiveEditor",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "E"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.closeAllEditors",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "W"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.files.saveAll",
+                    "args": []
+                }
+            ]
+        }
+    ],
+    "vim.hlsearch": true,
+    "vim.useCtrlKeys": true,
+    "window.zoomLevel": 0,
+    "editor.lineNumbers": "relative",
+    "editor.rulers": [
+        80
+    ],
+    "workbench.colorTheme": "Operator Mono Dark Theme",
+    "breadcrumbs.enabled": true,
+    "editor.fontFamily": "Dank Mono",
+    "editor.fontSize": 14,
+    "editor.fontLigatures": true,
+    "workbench.iconTheme": "Monokai Pro Icons"
+}
