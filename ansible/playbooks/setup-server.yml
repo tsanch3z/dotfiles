@@ -1,0 +1,12 @@
+- hosts: all
+
+  tasks:
+    - debug:
+        msg: ssh_public_key is required
+      failed_when: ssh_public_key is not defined
+
+- import_playbook: create-user.yml
+- import_playbook: grant-sudo.yml
+- import_playbook: setup-command-line-env.yml
+- import_playbook: secure-ssh.yml
+- import_playbook: setup-firewall.yml

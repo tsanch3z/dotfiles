@@ -1,0 +1,20 @@
+- hosts: all
+  become: yes
+  become_user: root
+
+  tasks:
+    - name: Install ufw
+      apt:
+        name: ufw
+        state: present
+
+    - name: Setup ufw
+      ufw:
+        state: enabled
+        policy: deny
+
+    - name: Allow ssh traffic
+      ufw:
+        rule: allow
+        port: 22
+        proto: tcp

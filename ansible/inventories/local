@@ -1,1 +1,2 @@
+ubuntu ansible_connection=docker ansible_host=ubuntu
 localhost ansible_connection=local

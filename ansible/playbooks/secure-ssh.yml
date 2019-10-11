@@ -1,0 +1,38 @@
+- hosts: all
+  become: yes
+  become_user: root
+
+  tasks:
+    - name: Install ssh
+      apt:
+        name: openssh-server
+        state: present
+
+    - name: Add authorized key for {{ user }}
+      authorized_key:
+        user: "{{ user }}"
+        state: present
+        exclusive: true
+        key: "{{ lookup('file', ssh_public_key) }}"
+
+    - name: Disallow password authentication
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: "^PasswordAuthentication"
+        line: "PasswordAuthentication no"
+        state: present
+      notify: Restart ssh
+
+    - name: Disallow root SSH access
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: "^PermitRootLogin"
+        line: "PermitRootLogin no"
+        state: present
+      notify: Restart ssh
+
+  handlers:
+    - name: Restart ssh
+      service:
+        name: ssh
+        state: restarted
