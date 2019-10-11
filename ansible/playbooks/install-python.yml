@@ -1,0 +1,6 @@
+- hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Install python # noqa 301
+      raw: apt-get update && apt-get install -y python3

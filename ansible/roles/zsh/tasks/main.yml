@@ -1,0 +1,23 @@
+- name: Install zsh
+  package:
+    name: zsh
+    state: present
+  become_user: "{{ (ansible_facts['os_family'] == 'Darwin') | ternary(user, 'root') }}"
+
+- name: Install antigen
+  git:
+    repo: https://github.com/zsh-users/antigen.git
+    dest: '{{ user_home }}/.antigen'
+
+- name: Template zshrc
+  template:
+    src: .zshrc
+    dest: '{{ user_home }}/.zshrc'
+    mode: 0600
+
+- name: Change default shell to use zsh
+  become_user: "{{ (ansible_facts['os_family'] == 'Darwin') | ternary(user, 'root') }}"
+  become: yes
+  user:
+    shell: /bin/zsh
+    name: '{{ user }}'

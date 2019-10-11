@@ -1,0 +1,43 @@
+- name: Install brew for mac
+  import_tasks: install-brew.yml
+  when: ansible_facts['os_family'] == 'Darwin'
+
+- name: Install base packages
+  package:
+    name: "{{ item }}"
+    state: present
+  become_user: "{{ (ansible_facts['os_family'] == 'Darwin') | ternary(user, 'root') }}"
+  with_items:
+    - git
+    - curl
+    - htop
+
+- name: Install mac specific packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - coreutils
+    - grep
+    - gnu-sed
+    - parallel
+  when: ansible_facts['os_family'] == 'Darwin'
+
+- name: Install debian specific packages
+  package:
+    name: "{{ item }}"
+    state: present
+  become_user: root
+  with_items:
+    - build-essential
+    - python3-pip
+    - python3-setuptools
+    - python3-virtualenv
+  when: ansible_facts['os_family'] == 'Debian'
+
+- name: Install virtualenvwrapper
+  environment:
+    PIP_REQUIRE_VIRTUALENV: false
+  pip:
+    name: virtualenvwrapper
+    state: present

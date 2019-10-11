@@ -1,0 +1,10 @@
+- name: Download brew install script
+  get_url:
+    url: https://raw.githubusercontent.com/Homebrew/install/master/install
+    dest: /tmp/brew-install.rb
+  register: brew_installer_download
+
+- name: Install brew # noqa 503
+  script: /tmp/brew-install.rb
+  when: brew_installer_download.changed
+

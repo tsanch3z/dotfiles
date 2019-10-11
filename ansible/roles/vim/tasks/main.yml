@@ -1,0 +1,19 @@
+- name: Install vim
+  become_user: "{{ (ansible_facts['os_family'] == 'Darwin') | ternary(user, 'root') }}"
+  package:
+    name: vim
+    state: present
+
+- name: Install vundle
+  git:
+    repo: https://github.com/VundleVim/Vundle.vim.git
+    dest: '{{ user_home }}/.vim/bundle/Vundle.vim'
+
+- name: Template vimrc
+  template:
+    src: .vimrc
+    dest: '{{ user_home }}/.vimrc'
+    mode: 0600
+
+- name: Install vim plugins
+  command: vim +PluginInstall +qall

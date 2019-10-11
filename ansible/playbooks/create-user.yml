@@ -1,0 +1,15 @@
+- hosts: all
+
+  tasks:
+    - name: Install sudo
+      package:
+        name: sudo
+        state: present
+
+    - name: Create {{ user }} user
+      user:
+        name: "{{ user }}"
+        state: present
+        groups:
+          - sudo
+

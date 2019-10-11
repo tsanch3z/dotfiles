@@ -1,0 +1,7 @@
+- name: Installing docker for mac
+  import_tasks: darwin.yml
+  when: ansible_facts['os_family'] == 'Darwin'
+
+- name: Installing docker for ubuntu
+  import_tasks: ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'

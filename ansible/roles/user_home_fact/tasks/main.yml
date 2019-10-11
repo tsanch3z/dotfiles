@@ -1,0 +1,21 @@
+- name: Get user home folder (Debian)
+  getent:
+    database: passwd
+    key: "{{ user }}"
+    split: ":"
+  when: ansible_facts['os_family'] == 'Debian'
+
+- name: Set user_home fact (Debian)
+  set_fact:
+    user_home: "{{ getent_passwd[user][4] }}"
+  when: ansible_facts['os_family'] == 'Debian'
+
+- name: Get user home folder (OSX)
+  command: dscl . -read /Users/{{ user }} NFSHomeDirectory
+  register: user_nfs_home
+  when: ansible_facts['os_family'] == 'Darwin'
+
+- name: Set user_home fact (OSX)
+  set_fact:
+    user_home: "{{ user_nfs_home.stdout.split(' ')[1] }}"
+  when: ansible_facts['os_family'] == 'Darwin'

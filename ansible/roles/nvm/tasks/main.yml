@@ -1,0 +1,9 @@
+- name: Downloading nvm install script
+  get_url:
+    url: https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh
+    dest: /tmp/nvm-install.sh
+  register: nvm_installer_download
+
+- name: Installing nvm # noqa 503
+  script: /tmp/nvm-install.sh
+  when: nvm_installer_download.changed

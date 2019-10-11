@@ -1,0 +1,20 @@
+- name: Install tmux
+  package:
+    name: tmux
+    state: present
+  become_user: "{{ (ansible_facts['os_family'] == 'Darwin') | ternary(user, 'root') }}"
+
+
+- name: Install tpm
+  git:
+    repo:  https://github.com/tmux-plugins/tpm
+    dest: '{{ user_home }}/.tmux/plugins/tpm'
+
+- name: Template tmux.conf
+  template:
+    src: .tmux.conf
+    dest: '{{ user_home }}/.tmux.conf'
+    mode: 0600
+
+- name: Install tmux plugins
+  command:  '{{ user_home }}/.tmux/plugins/tpm/scripts/install_plugins.sh'

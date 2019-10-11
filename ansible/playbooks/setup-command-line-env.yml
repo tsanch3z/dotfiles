@@ -1,0 +1,12 @@
+- hosts: all
+  become: yes
+  become_user: "{{ user }}"
+
+  roles:
+    - ../roles/user_home_fact
+    - ../roles/base-packages
+    - ../roles/docker
+    - ../roles/nvm
+    - ../roles/zsh
+    - ../roles/vim
+    - ../roles/tmux
