@@ -155,11 +155,15 @@ Plugin 'jelera/vim-javascript-syntax'
 
 Plugin 'scrooloose/nerdcommenter'
 
+Plugin 'vim-syntastic/syntastic'
+
 Plugin 'maxmellon/vim-jsx-pretty'
 
 Plugin 'editorconfig/editorconfig-vim'
 
 Plugin 'Raimondi/delimitMate'
+
+Plugin 'pearofducks/ansible-vim'
 
 
 " All of your Plugins must be added before the following line
@@ -197,9 +201,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 set ttimeoutlen=50
 
-" Use editorconfig external as +python3 breaks the integration
-let g:EditorConfig_core_mode="external_command"
-
 " Configure ctrlp
 let g:ctrlp_max_height = 30
 let g:ctrlp_show_hidden = 1
@@ -207,6 +208,19 @@ set wildignore+=*/node_modules
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
+
+" Configure syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Configure ansible custom playbooks path
+au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
 
 " Remove trailing spaces
 fun! TrimWhitespace()

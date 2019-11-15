@@ -5,6 +5,11 @@
         msg: ssh_public_key is required
       failed_when: ssh_public_key is not defined
 
+    - name: Upgrade packages
+      apt:
+        update_cache: true
+        upgrade: safe
+
 - import_playbook: create-user.yml
 - import_playbook: grant-sudo.yml
 - import_playbook: setup-command-line-env.yml

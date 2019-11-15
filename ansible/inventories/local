@@ -1,2 +1,5 @@
 ubuntu ansible_connection=docker ansible_host=ubuntu
 localhost ansible_connection=local
+
+[remote]
+212.47.234.23 ansible_user=root
