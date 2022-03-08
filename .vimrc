@@ -4,9 +4,6 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 " " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 
-" Vue syntax highligting
-autocmd BufNewFile,BufRead *.vue set ft=vue
-
 " " no compatible with vi
 set nocompatible
 
@@ -14,7 +11,10 @@ set nocompatible
 set modelines=0
 
 set undofile
+set undodir^=~/.vim/undodir//
 
+set swapfile
+set directory^=~/.vim/swap//
 " " Better copy & paste
 " " When you want to paste large blocks of code into vim, press F2 before you
 " " paste. At the bottom you should see ``-- INSERT (paste) --``.
@@ -122,10 +122,10 @@ set smartcase
 " " disable backup and swap files
 set nobackup
 set nowritebackup
-set noswapfile
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -155,11 +155,13 @@ Plugin 'jelera/vim-javascript-syntax'
 
 Plugin 'scrooloose/nerdcommenter'
 
+Plugin 'vim-syntastic/syntastic'
+
 Plugin 'maxmellon/vim-jsx-pretty'
 
 Plugin 'editorconfig/editorconfig-vim'
 
-Plugin 'Raimondi/delimitMate'
+Plugin 'vimwiki/vimwiki'
 
 
 " All of your Plugins must be added before the following line
@@ -168,7 +170,12 @@ filetype plugin indent on    " required
 
 " Set 256 color mode, and theme
 set t_Co=256
-colorscheme nord
+try
+  colorscheme nord
+catch /^Vim\%((\a\+)\)\=:E185/
+  colorscheme default
+  set background=dark
+endtry
 
 let g:NERDSpaceDelims = 1
 
@@ -197,9 +204,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 set ttimeoutlen=50
 
-" Use editorconfig external as +python3 breaks the integration
-let g:EditorConfig_core_mode="external_command"
-
 " Configure ctrlp
 let g:ctrlp_max_height = 30
 let g:ctrlp_show_hidden = 1
@@ -207,6 +211,20 @@ set wildignore+=*/node_modules
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
+
+" Configure syntastic
+set statusline+=%#warningmsg#
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Configure ansible custom playbooks path
+au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
+
+let g:vimwiki_list = [{ 'path': '~/Projects/tsanch3z/notes' }]
 
 " Remove trailing spaces
 fun! TrimWhitespace()
