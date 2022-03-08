@@ -1,6 +1,6 @@
 {
     "vim.leader": ",",
-    "editor.cursorStyle": "block",
+    "editor.cursorStyle": "line",
     "vim.insertModeKeyBindings": [
         {
             "before": [
@@ -123,8 +123,7 @@
     ],
     "vim.hlsearch": true,
     "vim.useCtrlKeys": true,
-    "window.zoomLevel": 0,
-    "editor.lineNumbers": "relative",
+    "editor.lineNumbers": "on",
     "editor.rulers": [
         80
     ],
@@ -133,5 +132,18 @@
     "editor.fontFamily": "Dank Mono",
     "editor.fontSize": 14,
     "editor.fontLigatures": true,
-    "workbench.iconTheme": "Monokai Pro Icons"
+    "workbench.iconTheme": "Monokai Pro Icons",
+    "explorer.confirmDelete": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "javascript.suggest.autoImports": false,
+    "editor.tabSize": 8,
+    "editor.insertSpaces": false,
+    "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+    "editor.wordWrap": "off",
+    "vim.easymotion": true,
+    "gitlens.codeLens.authors.enabled": false,
+    "vim.smartRelativeLine": true,
+    "gitlens.codeLens.recentChange.enabled": false,
+    "python.linting.flake8Enabled": true
 }
